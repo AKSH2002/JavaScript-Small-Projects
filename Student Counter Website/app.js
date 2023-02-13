@@ -17,6 +17,9 @@ decrementButton.addEventListener("click", function () {
 });
 
 saveButton.addEventListener("click", function () {
+  // Remove all previous entries
+  entriesList.innerHTML = '';
+
   const li = document.createElement("li");
   li.textContent = count;
   entriesList.appendChild(li);
