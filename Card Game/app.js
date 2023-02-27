@@ -1,38 +1,128 @@
-const card = document.querySelector("#card");
-const total = document.querySelector("#total");
-const message = document.querySelector("#message");
-const addCardButton = document.querySelector("#addCard");
-const newGameButton = document.querySelector("#newGame");
 
-let cardValue = 0;
-let totalValue = 0;
 
-addCardButton.addEventListener("click", function () {
-  if (cardValue >= 10) {
-    cardValue = 1;
+
+let player = {
+  rupees: 200
+}
+
+let cards = []
+let sum = 0
+let count = 0
+let cardCount = []
+
+let hasBlackJack = false
+let isAlive = false
+
+let message = ""
+let messageEl = document.querySelector("#message-el");
+let sumEl = document.querySelector("#sum-el");
+let cardsEl = document.querySelector("#cards-el");
+let playerEl = document.querySelector("#player-el");
+
+let newGameBtn = document.querySelector("#new-game-btn")
+let startGameBtn = document.querySelector("#start-game-btn")
+let newCardBtn = document.querySelector("#new-card-btn")
+
+let card1 = document.querySelector("#card1")
+let card2 = document.querySelector("#card2")
+let card3 = document.querySelector("#card3")
+let card4 = document.querySelector("#card4")
+let card5 = document.querySelector("#card5")
+let card6 = document.querySelector("#card6")
+let card7 = document.querySelector("#card7")
+let card8 = document.querySelector("#card8")
+let card9 = document.querySelector("#card9")
+let card10 = document.querySelector("#card10")
+let card11 = document.querySelector("#card11")
+let card12 = document.querySelector("#card12")
+
+let allCards = [card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,card11,card12]
+
+playerEl.textContent = `Your Account Balance is: Rs.${player.rupees}`;
+
+function getRandomCard() {
+  let randomNumber = Math.ceil(Math.random() * 13)
+  
+  if (randomNumber >= 11) {
+      return 10
+  } else if (randomNumber === 1) {
+      return 11
   } else {
-    cardValue++;
+      return randomNumber
+  }
+}
+
+function startGame() {
+  isAlive = true;
+  hasBlackJack = false;
+  let firstCard = getRandomCard();
+  let secondCard = getRandomCard();
+  cards = [firstCard, secondCard]
+  sum = firstCard + secondCard;
+  cardCount = [card1,card2]
+  cardCount[0].style.display="inline-block"
+  cardCount[0].innerHTML=`<div class="card-value">${firstCard}</span>`
+  cardCount[1].style.display="inline-block"
+  cardCount[1].innerHTML=`<div class="card-value">${secondCard}</span>`
+  count = 2
+  renderGame();
+  renderButtons();
+}
+function renderGame() {
+  cardsEl.textContent = "Cards: "
+  // for loop that renders out all the cards instead of just two
+  for (let i = 0; i < cards.length; i++) {
+      cardsEl.textContent += cards[i] + " "
   }
 
-  card.textContent = cardValue;
-  totalValue += cardValue;
-  total.textContent = `Total: ${totalValue}`;
+  // re-render Sum and Cards elements
+  sumEl.textContent = `Sum = ${sum}`
 
-  if (totalValue === 21) {
-    message.textContent = "You win the game! +200 added to the total balance.";
-    totalValue += 200;
-    total.textContent = `Total: ${totalValue}`;
-  } else if (totalValue > 21) {
-    message.textContent = "You lose the game! -200 subtracted from the total balance.";
-    totalValue -= 200;
-    total.textContent = `Total: ${totalValue}`;
+  // else/if statement to decide Blackjack, and renders out Message
+  if (sum <= 20) {
+      message = "Do you want to draw a new card?"
+  } else if (sum === 21) {
+      message = "Congratulations! You won the game!!!"
+      hasBlackJack = true
+      player.rupees += 200
+  } else {
+      message = "Sorry...You lose the game!"
+      isAlive = false
+      player.rupees -= 200
   }
-});
+  playerEl.textContent = `Your Account Balance is: Rs.${player.rupees}`;
+  messageEl.textContent = message;
+}
 
-newGameButton.addEventListener("click", function () {
-  cardValue = 0;
-  totalValue = 0;
-  card.textContent = cardValue;
-  total.textContent = `Total: ${totalValue}`;
-  message.textContent = "";
-});
+function renderButtons() {
+  startGameBtn.style.display="none"
+  newGameBtn.style.display="block"
+  newCardBtn.style.display="block"
+}
+
+function newCard() {
+  if (isAlive === true && hasBlackJack === false) {
+      let card = getRandomCard()
+      sum += card
+      count++
+      card
+      // Push the card to the cards array
+      cards.push(card)
+      cardCount.push(allCards[count-1])
+      cardCount[count-1].style.display="inline-block"
+      cardCount[count-1].innerHTML=`<div class="card-value">${card}</span>`
+      console.log(cards)
+      renderGame()
+  }
+}
+
+function resetCards() {
+  for (let i=0; i<count;i++){
+      allCards[i].style.display="none";
+  }
+}
+
+function newGame() {
+  resetCards()
+  startGame()
+}
