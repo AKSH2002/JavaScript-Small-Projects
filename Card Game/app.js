@@ -1,6 +1,3 @@
-
-
-
 let player = {
   rupees: 200
 }
