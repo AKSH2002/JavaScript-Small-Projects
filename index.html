@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>JavaScript Mini Project</title>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>JavaScript Mini Projects</h1>
+        <p>Learning purpose only!</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Card game</h3>
+                <p>
+                    The card game is a simple web-based game where cards are added to the sum one by one by clicking the
+                    "Add Card" button until the sum is equal to or greater than 21. If the sum is equal to 21, the
+                    player wins the game and 200 amounts are added to their total balance. If the sum is greater than
+                    21, the player loses the game and 200 amounts are subtracted from their total balance. The game can
+                    be restarted by clicking the "New Game" button.</p>
+                <button id="myButton1" class="float-left submit-button">View</button>
+
+                <script type="text/javascript">
+                    document.getElementById("myButton1").onclick = function () {
+                        location.href = "Card Game/index.html";
+                    };
+                </script>
+                
+            </div>
+            <div class="col-sm-4">
+                <h3>Student Counter</h3>
+                <p>
+                    The Student Counter game is a simple web-based game where a number is displayed in a box, which can
+                    be incremented or decremented by clicking buttons. When the "Save" button is clicked, the current
+                    number is added to a list of saved entries. The game also includes a button to clear the list of
+                    saved entries.</p>
+                    <button id="myButton2" class="float-left submit-button">View</button>
+
+                    <script type="text/javascript">
+                        document.getElementById("myButton2").onclick = function () {
+                            location.href = "Student Counter Website/index.html";
+                        };
+                    </script>
+            </div>
+            <!-- <div class="col-sm-4">
+            <h3>Column 3</h3>
+            <p>Lorem ipsum dolor..</p>
+          </div> -->
+        </div>
+    </div>
+</body>
+
+</html>
