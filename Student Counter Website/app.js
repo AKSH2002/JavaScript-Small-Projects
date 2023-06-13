@@ -18,7 +18,7 @@ decrementButton.addEventListener("click", function () {
 
 saveButton.addEventListener("click", function () {
   // Remove all previous entries
-  entriesList.innerHTML = '';
+  // entriesList.innerHTML = '';
 
   const li = document.createElement("li");
   li.textContent = count;
