@@ -1,0 +1,56 @@
+/*==================== CONTACT ME ====================*/
+#contact {
+    text-align: center;
+    padding: 40px;
+  }
+  
+  #contact h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-details {
+    margin-bottom: 20px;
+  }
+  
+  .contact-details p {
+    margin-bottom: 10px;
+  }
+  
+  #contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  #contact-form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  #contact-form input,
+  #contact-form textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  #contact-form textarea {
+    height: 120px;
+  }
+  
+  #contact-form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #contact-form button:hover {
+    background-color: #45a049;
+  }
+  
